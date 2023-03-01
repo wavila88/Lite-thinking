@@ -1,0 +1,95 @@
+.loginContainer{
+	height: 331px;
+	width: 300px;
+	background-color: white;
+	margin-top: 10%;
+	margin-left: 40%;
+	border-top: 3px solid #0000FF;
+	border-right: 6px solid #0000FF;
+	border-bottom: 3px solid #0000FF;
+	border-left: 1px solid #0000FF;
+  }
+  
+  .logo{
+	margin-left: 25%;
+  }
+  
+  .input{
+	padding: 10px;
+	margin: 10px; 
+	background-color: #B7DAF5;
+	border-top: 4px solid #84A3BA;
+  }
+  
+  .input_container{
+	margin-left: 40px;
+  }
+  
+  .login_button{
+	background-color: #204180;
+	color:white;
+	height: 30px;
+	width: 205px;
+	margin-left: 10px;
+	margin-top: 10px;
+	cursor: pointer;
+  }
+  .login_button:disabled{
+    background-color: #A2A1A4;
+    cursor: not-allowed;
+  }
+  
+  .container_password{
+	width: 100%;
+	margin-top: 70px;
+	margin-left: 75px;
+  }
+  
+  .title{
+	font-family: serif;
+    width: 60%;
+    padding-top: 56px;
+    margin-left: 6%;
+    font-size: medium;
+    height: 69px;
+  }
+  
+  .register_button{
+	background-color: #FCFEFF;
+	color:blank;
+	height: 30px;
+	width: 205px;
+	margin-left: 50px;
+	margin-top: 10px;
+  }
+  
+  #input1{
+	background: #B7DAF5 url(../../public/images/usuario-icon.PNG) no-repeat  7px 7px ; 
+	background-size: 20px;
+	padding-left: 28px;
+	width: 62%;
+  }
+  
+  #input2{
+	background: #B7DAF5 url(../../public/images/contraseña-icon.PNG) no-repeat  7px 7px ;
+	background-size: 20px;
+	padding-left: 28px;
+	width: 62%;
+  }
+
+  .return_button{
+	background-color: #FFFFFF;
+	color:black;
+	height: 30px;
+	width: 120px;
+	margin-left: 1380px;
+	margin-top: 5px;
+	border:solid #204180 3px;
+  }
+  #input3{
+	background: #FFFFFF url(../../public/images/boton-inicio.PNG) no-repeat  7px 7px ;
+	background-size: 20px;
+	padding-left: 28px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+  }

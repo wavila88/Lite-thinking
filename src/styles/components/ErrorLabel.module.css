@@ -1,0 +1,9 @@
+.errorContainer{
+  width: 100%;
+}
+
+.errorLabel{
+  color: red;
+  font-size: 12px;
+  padding-left: 10px;
+}
