@@ -7,4 +7,4 @@ export const loginService =  async (loginInfo: LoginForm)=>
     url: '/api/login',
     method: 'POST',
     body: loginInfo
-  })
+  });

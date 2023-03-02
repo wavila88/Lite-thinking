@@ -1,4 +1,4 @@
-import sql from 'mssql';
+const { Sequelize } = require('sequelize');
 import config from '../utils/config';
 
 const poolConnection ={
@@ -9,40 +9,22 @@ const poolConnection ={
   options: {encrypt: false}
 }
 
-const connect = async  (query: string) => {
+const sequelize = new Sequelize(poolConnection.database, poolConnection.user, poolConnection.password, {
+  host: 'localhost',
+  dialect: 'mssql'
+});
+
+const connect = async () => {
 
   try {
-    await sql.connect(poolConnection);
-    return await sql.query(query);  
-  } catch (error) {
-    console.log(error);
-    
-  }
-//  const connection = await sql.connect(poolConnection, function (err: any) {
-    
-//     if (err){
-//       console.log(err);
-//       throw new Error(err)
-//     } 
-  
-//     // create Request object
-//     var request = new sql.Request();
-       
-//     // query to the database and get the records
-//     request.query(query, function (err: any, recordset: any) {
-     
-        
-//         if (err) console.log(err)
-  
-//         // send records as a response
-      
-//        return recordset;
-        
-//     });
-//   });
-  
-  
-  
-}
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
 
-export default connect;
+
+
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+} 
+
+export default sequelize;

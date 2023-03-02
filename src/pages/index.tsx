@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Inter } from 'next/font/google'
 import ErrorLabel from '../components/errolLabel';
 import styles from '../styles/login.module.css';
@@ -13,6 +13,8 @@ export default function Home() {
 
   const [errorMessage, setErrorMessage] = useState<LoginErrorMessages>({emailMessage: null, isReadyToSubmit: false});
   const [loginForm, setLoginForm] = useState<LoginForm>({email: '', password:''})
+
+
 
   const validateEmailFormat = (event : React.ChangeEvent<HTMLInputElement>):void => {
     setLoginForm({...loginForm, email: event.target.value});
