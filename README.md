@@ -13,7 +13,7 @@ Monolitic  Aplication made with:
 
 ## Send report emails
 
-* Make a success login > click in button `send Report`
+* Make a success login > click in button `Send Report`
 
 ![image](https://user-images.githubusercontent.com/41836365/222772539-3eb2a7a8-90a3-4b61-b257-508f6171dbe9.png)
 
