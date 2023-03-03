@@ -15,4 +15,14 @@ export const createEnterprise = async (enterprise: EnterpriseType)=> {
     url: '/api/enterprise'
   });
   Router.push('/enterprises');
-}
+};
+
+/**
+ * Back end will get verified emails and all enterprises to send emails
+ */
+export const sendEmails = async () => {
+ await makeRequest({
+  method: 'POST',
+  url: '/api/emailEnterprise'
+ })
+};
