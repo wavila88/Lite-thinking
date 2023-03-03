@@ -49,4 +49,6 @@ exports.handler = async function (event) {
 ![image](https://user-images.githubusercontent.com/41836365/222776249-215950e0-9730-4644-a2b2-1c7bc68a9aae.png)
 
 
+## Testing
 
+* Here there is a [small testings](https://github.com/wavila88/lite-thinking/blob/development/src/test/index.test.js)
