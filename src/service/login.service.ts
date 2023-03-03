@@ -9,7 +9,7 @@ export const loginService =  async (loginInfo: LoginForm)=> {
       method: 'POST',
       body: loginInfo
     });
-    Router.push('/enterprise');
+    Router.push('/enterprises');
   } catch (error:any) {
     // console.log(error.response);
   }

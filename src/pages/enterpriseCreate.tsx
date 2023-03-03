@@ -10,11 +10,11 @@ import {
 } from 'mdb-react-ui-kit';
 import { createEnterprise } from '@/service/enterprise.service';
 
-const Enterprise = () => {
+const EnterpriseCreate = () => {
 
   const [enterprise, setEnterprise] = useState<EnterpriseType>(
     {
-      NIT: '',
+      NIT: 0,
       address: '',
       enterpriseName: '',
       phoneNumber: ''
@@ -74,7 +74,7 @@ const Enterprise = () => {
           />
         </MDBValidationItem>
         <div className='col-12'>
-        <MDBBtn type='submit' onClick={ ()=>createEnterprise(enterprise) }>Save</MDBBtn>
+        <MDBBtn type='submit' onClick={ ()=>createEnterprise(enterprise) }>Save Enterprise</MDBBtn>
         
       </div>
       </MDBValidation>
@@ -84,4 +84,4 @@ const Enterprise = () => {
   )
 };
 
-export default Enterprise;
+export default EnterpriseCreate;

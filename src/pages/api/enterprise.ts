@@ -11,7 +11,9 @@ export default async function handler(
 ) {
   console.log(req.body);
   try {
-   await createEnterprise(req.body);
+  const userCreated =await createEnterprise(req.body);
+  console.log('USER CREATED => '+ JSON.stringify(userCreated));
+  
   
       res.status(200).json({ 
        response: ENTERPRISE_CREATED
@@ -19,6 +21,9 @@ export default async function handler(
   
 
   } catch (error) {
+
+    console.log(error);
+    
     res.status(500).json({
       response: JSON.stringify(error)
      });

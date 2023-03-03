@@ -10,6 +10,7 @@ export const loginQuery = async (info: LoginForm) => {
   const users =await Users.findAll({ where: query });
   const user =getUser(users,info.password);
   console.log(`user => ${JSON.stringify(user)}`);
+  //TODO auth with JWT
   return user;
 };
 

@@ -7,7 +7,6 @@ const Enterprises = sequelize.define('Enterprises', {
   NIT: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true,
     primaryKey: true,
     unique: true,
   },
