@@ -12,3 +12,20 @@ export type UserType ={
   password: string,
   rol_id: number
 }
+
+export type UserToReturn ={
+  email: string,
+  rol:number
+}
+
+export type ResponseString ={
+  response: string
+}
+
+export type EnterpriseType = {
+  NIT: number,  
+  enterpriseName: string,
+  address: string,
+  phoneNumber: string
+
+}

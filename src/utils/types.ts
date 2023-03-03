@@ -18,3 +18,11 @@ export type RequestParams = {
   body?: any;
   url: string;
 };
+
+export type EnterpriseType = {
+  NIT: number,  
+  enterpriseName: string,
+  address: string,
+  phoneNumber: string
+
+}

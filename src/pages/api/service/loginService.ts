@@ -1,8 +1,7 @@
 import { LoginForm } from "@/utils/types";
 import Users from "../models/Users/UserModel";
-import { compare, decrypt, encrypt, test } from "../utils/encryptFile";
-// import connect from "../sql/connect";
-import { createDataBase} from "./createDBService";
+import { compare } from "../utils/encryptFile";
+
 
 
 export const loginQuery = async (info: LoginForm) => {
@@ -11,7 +10,7 @@ export const loginQuery = async (info: LoginForm) => {
   const users =await Users.findAll({ where: query });
   const user =getUser(users,info.password);
   console.log(`user => ${JSON.stringify(user)}`);
-  
+  return user;
 };
 
 const getUser = (users: any, password: string) => {

@@ -1,0 +1,14 @@
+.container{
+  background-color: white;
+  border-top: 3px solid #0000ff;
+  border-right: 6px solid #0000ff;
+  border-bottom: 6px solid #0000ff;
+  border-left: 6px solid #0000ff;
+  margin: 7% 15% 15% 15%;
+  height: 700px;
+}
+
+.content{
+  margin: 35px 50px 30px 50px;
+}
+

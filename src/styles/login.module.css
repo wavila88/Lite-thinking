@@ -67,14 +67,14 @@
 	background: #B7DAF5 url(../../public/images/usuario-icon.PNG) no-repeat  7px 7px ; 
 	background-size: 20px;
 	padding-left: 28px;
-	width: 62%;
+	width: 80%;
   }
   
   #input2{
 	background: #B7DAF5 url(../../public/images/contraseña-icon.PNG) no-repeat  7px 7px ;
 	background-size: 20px;
 	padding-left: 28px;
-	width: 62%;
+	width: 80%;
   }
 
   .return_button{

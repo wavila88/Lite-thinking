@@ -7,6 +7,7 @@ import { emailValidation } from '@/utils/utils';
 import { LoginErrorMessages, LoginForm } from '@/utils/types';
 import { EMAIL_ERROR_MESSAGE } from '@/utils/constants';
 import { loginService, initDBService } from '@/service/login.service';
+import Router from 'next/router'
 
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
       })
     } 
   }
-
+ 
 
   return (
     <>
