@@ -7,7 +7,8 @@ const Roles = sequelize.define('Roles', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    length: 30
+    length: 30,
+    unique: true
   },
 }, {
   freezeTableName: true

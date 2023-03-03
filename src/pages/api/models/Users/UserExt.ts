@@ -13,6 +13,10 @@ Users.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  rol_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  }
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance

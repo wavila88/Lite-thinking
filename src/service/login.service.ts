@@ -8,3 +8,9 @@ export const loginService =  async (loginInfo: LoginForm)=>
     method: 'POST',
     body: loginInfo
   });
+
+export const initDBService = async ()=> {
+  makeRequest({
+    url: '/api/init'
+  })
+}

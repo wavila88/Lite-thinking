@@ -6,7 +6,7 @@ import logo from '../../public/images/Logo.png'
 import { emailValidation } from '@/utils/utils';
 import { LoginErrorMessages, LoginForm } from '@/utils/types';
 import { EMAIL_ERROR_MESSAGE } from '@/utils/constants';
-import { loginService } from '@/service/login.service';
+import { loginService, initDBService } from '@/service/login.service';
 
 
 export default function Home() {
@@ -14,6 +14,12 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState<LoginErrorMessages>({emailMessage: null, isReadyToSubmit: false});
   const [loginForm, setLoginForm] = useState<LoginForm>({email: '', password:''})
 
+  /**
+   * Create DB and load info
+   */
+  useEffect( () => {
+    initDBService();
+ },[]);
 
 
   const validateEmailFormat = (event : React.ChangeEvent<HTMLInputElement>):void => {

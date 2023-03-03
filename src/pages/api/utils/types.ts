@@ -10,5 +10,5 @@ export type RolType ={
 export type UserType ={
   email: string,
   password: string,
-  //rol_id: number
+  rol_id: number
 }

@@ -7,20 +7,21 @@ const Users = sequelize.define('Users', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    length: 30
+    length: 30,
+    unique: true
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
     length: 30
   },
-  // rol_id: {
-  //   type: DataTypes.INTEGER,
-  //   references: {
-  //     model: 'Rol', // 'fathers' refers to table name
-  //     key: 'id', // 'id' refers to column name in fathers table
-  //  }
-  // }
+  rol_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'Roles', // 'fathers' refers to table name
+      key: 'id', // 'id' refers to column name in fathers table
+   }
+  }
 }, {
   freezeTableName: true
 });
