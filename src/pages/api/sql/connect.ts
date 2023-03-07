@@ -10,7 +10,7 @@ const poolConnection ={
 }
 
 const sequelize = new Sequelize(poolConnection.database, poolConnection.user, poolConnection.password, {
-  host: 'localhost',
+  host: poolConnection.server,
   dialect: 'mssql'
 });
 console.log(config.sqlConection.server);

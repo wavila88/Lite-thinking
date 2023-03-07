@@ -20,7 +20,8 @@ export const createDataBase = async () =>{
     {email: 'external@gmail.oom', password: await encrypt('4321'), rol_id: 2}
   ]
   //Roles
-
+  await Roles.sync();
+ 
   arrayRol.forEach((rol:RolType) => {
     Roles.create({
       name: rol.name
@@ -28,7 +29,7 @@ export const createDataBase = async () =>{
   });
 
   //Users
-
+  await Users.sync();
     arrayUsers.forEach((user:UserType) => {
      Users.create(
        { 

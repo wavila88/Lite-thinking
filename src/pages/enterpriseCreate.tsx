@@ -14,10 +14,10 @@ import config from './api/utils/config';
 
 const EnterpriseCreate = () => {
 
-  console.log(config.sqlConection.server);
-  console.log(config.sqlConection.database);
   console.log(config.sqlConection.user);
   console.log(config.sqlConection.password);
+  console.log(config.sqlConection.server);
+  console.log(config.sqlConection.database);
 
   const [enterprise, setEnterprise] = useState<EnterpriseType>(
     {
