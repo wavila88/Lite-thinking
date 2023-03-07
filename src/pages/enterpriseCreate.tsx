@@ -9,8 +9,15 @@ import {
 
 } from 'mdb-react-ui-kit';
 import { createEnterprise } from '@/service/enterprise.service';
+import config from './api/utils/config';
+
 
 const EnterpriseCreate = () => {
+
+  console.log(config.sqlConection.server);
+  console.log(config.sqlConection.database);
+  console.log(config.sqlConection.user);
+  console.log(config.sqlConection.password);
 
   const [enterprise, setEnterprise] = useState<EnterpriseType>(
     {
@@ -74,7 +81,7 @@ const EnterpriseCreate = () => {
           />
         </MDBValidationItem>
         <div className='col-12'>
-        <MDBBtn type='submit' onClick={ ()=>createEnterprise(enterprise) }>Save Enterprise</MDBBtn>
+        <MDBBtn type='submit' onClick={ ()=> createEnterprise(enterprise) }>Save Enterprise</MDBBtn>
         
       </div>
       </MDBValidation>

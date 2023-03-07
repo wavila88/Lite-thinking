@@ -7,7 +7,8 @@ import { emailValidation } from '@/utils/utils';
 import { LoginErrorMessages, LoginForm } from '@/utils/types';
 import { EMAIL_ERROR_MESSAGE } from '@/utils/constants';
 import { loginService, initDBService } from '@/service/login.service';
-import Router from 'next/router'
+import Image from 'next/image';
+
 
 
 export default function Home() {
@@ -45,7 +46,7 @@ export default function Home() {
     <>
     <div className={styles.loginContainer}>
       <div className={styles.logo}>
-        <img width="150" height="80" src={logo.src}></img>
+        <Image alt='' width="150" height="80" src={logo.src}></Image>
       </div>
       <div className={styles.input_container}>
         <input  data-testid='email-test' className={styles.input} placeholder="User" onChange={(event) => validateEmailFormat(event)} id={styles.input1}></input>

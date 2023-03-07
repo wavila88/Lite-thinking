@@ -13,6 +13,11 @@ const sequelize = new Sequelize(poolConnection.database, poolConnection.user, po
   host: 'localhost',
   dialect: 'mssql'
 });
+console.log(config.sqlConection.server);
+console.log(config.sqlConection.database);
+console.log(config.sqlConection.user);
+console.log(config.sqlConection.password);
+
 
 const connect = async () => {
 

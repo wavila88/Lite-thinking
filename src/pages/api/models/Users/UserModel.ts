@@ -33,7 +33,7 @@ console.log(Users === sequelize.models.Users); // true
 sequelize.sync().then(() => {
   console.log('User table created successfully!');
 
-}).catch((error) => {
+}).catch((error : any) => {
   console.error('Unable to create table : ', error);
 });
 

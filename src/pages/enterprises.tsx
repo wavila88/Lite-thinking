@@ -6,7 +6,7 @@ import { COLUMNS } from '@/utils/enterprise.utils';
 import { EnterpriseType } from '@/utils/types';
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { toPng } from 'html-to-image';
-import { saveAs } from 'file-saver';
+const { saveAs } = require('file-saver');
 
 import Button from 'react-bootstrap/Button';
 import Router from 'next/router'
@@ -51,18 +51,18 @@ const Enterprises = () => {
   <div ref={ref}>
    <ContainerLayout >
     
-   <MDBTable ref={ref}>
+   <MDBTable>
       <MDBTableHead>
         <tr>
-          {COLUMNS.map(colunm => (
-            <th scope='col'>{colunm}</th>
+          {COLUMNS.map((colunm, index) => (
+            <th scope='col' key={index}>{colunm}</th>
           ))}
         </tr>
       </MDBTableHead>
       <MDBTableBody>
 
-        {enterprises && enterprises.map(enterprise => (
-          <tr>
+        {enterprises && enterprises.map((enterprise, index) => (
+          <tr key={index}>
             <th scope='row'>{enterprise.NIT}</th>
             <td>{enterprise.enterpriseName}</td>
             <td>{enterprise.address}</td>

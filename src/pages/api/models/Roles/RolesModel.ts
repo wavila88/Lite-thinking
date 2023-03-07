@@ -21,7 +21,7 @@ console.log(Roles === sequelize.models.Roles); // true
 sequelize.sync().then(() => {
   console.log('Roles table created successfully!');
 
-}).catch((error) => {
+}).catch((error: any) => {
   console.error('Unable to create table : ', error);
 });
 

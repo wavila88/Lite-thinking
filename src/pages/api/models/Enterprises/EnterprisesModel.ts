@@ -37,7 +37,7 @@ console.log(Enterprises === sequelize.models.Enterprises); // true
 sequelize.sync().then(() => {
   console.log('Enterprises table created successfully!');
 
-}).catch((error) => {
+}).catch((error:any) => {
   console.error('Unable to create table : ', error);
 });
 
