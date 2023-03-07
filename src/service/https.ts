@@ -21,9 +21,9 @@ export const makeRequest = async ({
   console.log(json);
   if (json.error) {
     const errorMessage =
-      json.data?.message ||
-      'Something went wrong,';
-    throw new Error(errorMessage);
+    json.data?.message ||
+    'Something went wrong,';
+  throw new Error(errorMessage);
   }
 
   return json;

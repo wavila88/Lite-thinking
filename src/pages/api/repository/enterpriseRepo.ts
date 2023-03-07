@@ -1,6 +1,6 @@
 import { makeRequest } from "../utils/https";
 import Enterprises from "../models/Enterprises/EnterprisesModel";
-import { API_EMAIL_SERVICE, ARRAY_VERIFIED_EMAILS } from "../utils/constants";
+import { API_EMAIL_SERVICE } from "../utils/constants";
 import { EnterpriseType } from "../utils/types";
 
 export const getEnterprises = async () =>  await Enterprises.findAll({attributes: ['NIT', 'enterpriseName','address','phoneNumber']});
@@ -20,16 +20,23 @@ export const createEnterprise = async (enterprise: EnterpriseType) => {
 }; 
 
 
-export const sendEmailWithEnterprises = async() => {
+export const sendEmailWithEnterprises = async(emails:any) => {
+  console.log('Correos =>'+ emails);
+  
  const enterprises = await getEnterprises();
  let message= '';
 
+ 
+
  enterprises.forEach((enterprise: any) => {
-    message += `NIT: ${enterprise.NIT}, Enterprise: ${enterprise.enterpriseName}, address: ${enterprise.address}, Phone number: ${enterprise.phoneNumber} \n`
+    message += `NIT: ${enterprise.NIT}, Enterprise: ${enterprise?.enterpriseName}, address: ${enterprise?.address}, Phone number: ${enterprise?.phoneNumber} \n`
  });
 
+ console.log(message);
+
+ 
  const body = {
-  emails : ARRAY_VERIFIED_EMAILS,
+  emails : emails,
   message: message
  }
 

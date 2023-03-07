@@ -1,4 +1,5 @@
 // import Rol from '../models/RolModel';
+import Enterprises from '../models/Enterprises/EnterprisesModel';
 import Roles from '../models/Roles/RolesModel';
 import Users from '../models/Users/UserModel';
 import { compare, encrypt } from '../utils/encryptFile';
@@ -17,10 +18,11 @@ export const createDataBase = async () =>{
 
   const arrayUsers: Array<UserType> = [
     {email:'Josep@gmail.com', password: await encrypt('1234567'), rol_id:1},
-    {email: 'external@gmail.oom', password: await encrypt('4321'), rol_id: 2}
+    {email: 'external@gmail.com', password: await encrypt('4321'), rol_id: 2}
   ]
   //Roles
   await Roles.sync();
+  await Enterprises.sync();
  
   arrayRol.forEach((rol:RolType) => {
     Roles.create({

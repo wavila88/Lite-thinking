@@ -17,3 +17,8 @@ CMD ["npm", "start"]
 # To create docker image
 # docker build -t lite-thinking:v1 .
 # docker run --publish 80:80 lite-thinking:v1
+
+#Push into ECR
+# docker build -t lite-thinking:v1 .
+# docker tag lite-thinking:v1 public.ecr.aws/p1g5b2e2/think-lite:latest
+# docker push public.ecr.aws/p1g5b2e2/think-lite:latest

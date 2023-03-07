@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {createDataBase} from './service/createDBService';
+import {createDataBase} from './repository/createDBRepo';
 
 type Data = {
   response: string

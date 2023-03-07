@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createEnterprise } from './service/enterpriseService';
+import { createEnterprise } from './repository/enterpriseRepo';
 import { ENTERPRISE_CREATED } from './utils/constants';
 import { ResponseString, UserToReturn } from './utils/types';
 

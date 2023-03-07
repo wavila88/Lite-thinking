@@ -24,5 +24,26 @@ export type EnterpriseType = {
   enterpriseName: string,
   address: string,
   phoneNumber: string
+}
 
+export type EnterpriseTypeForm = {
+  NIT: RegexValidation<number>,  
+  enterpriseName: RegexValidation<string>,
+  address: RegexValidation<string>,
+  phoneNumber: RegexValidation<string>
+
+};
+/**
+ * Using Generics for validation
+ */
+export type RegexValidation<T> = {
+  element: T
+  isInvalid: boolean,
+  feedBack: string
+},
+
+
+export type EmailsArray = {
+  emails: string,
+  isvalid: boolean
 }

@@ -11,12 +11,14 @@ const { saveAs } = require('file-saver');
 import Button from 'react-bootstrap/Button';
 import Router from 'next/router'
 import styles from '../styles/enterprise.module.css'
+import { ROL_ADMIN, ROL_ITEM } from '@/utils/constants';
+import EnterpriseModal from '@/components/enterpriseModal';
 
 
 const Enterprises = () => {
 
  const [enterprises, setEnterprises] = useState<Array<EnterpriseType>>();
- const ref = useRef<HTMLDivElement>(null)
+ const ref = useRef<HTMLDivElement>(null);
 
  const handleScreenshot = useCallback(() => {
   if (ref.current === null) {
@@ -38,7 +40,6 @@ const Enterprises = () => {
 
 
   useEffect(() => {
-    // setEnterprises( getEnterprises());
     getEnterprises().then(response => {
  
       setEnterprises(response);
@@ -73,18 +74,21 @@ const Enterprises = () => {
        
       </MDBTableBody>
     </MDBTable>
+  { typeof window !== 'undefined' && localStorage.getItem(ROL_ITEM) === ROL_ADMIN &&
 
     <div className={styles.buttonsContainer}>
-        <div className={styles.spaceBtn}>
-          <Button variant="dark" onClick={()=> Router.push('/enterpriseCreate')}>Create Enterprise</Button>
-        </div>
-        <div className={styles.spaceBtn}>
-          <Button variant="dark" onClick={handleScreenshot}>Download Report</Button>
-        </div>
-        <div className={styles.spaceBtn}>
-          <Button variant="dark" onClick={() => sendEmails()}>Send Report</Button>
-        </div>
+      <div className={styles.spaceBtn}>
+        <Button variant="dark" onClick={()=> Router.push('/enterpriseCreate')}>Create Enterprise</Button>
       </div>
+      <div className={styles.spaceBtn}>
+        <Button variant="dark" onClick={handleScreenshot}>Download Report</Button>
+      </div>
+      <div className={styles.spaceBtn}>
+        <EnterpriseModal/>
+      </div>
+    </div>
+  }
+   
     </ContainerLayout> 
   </div>
   )
