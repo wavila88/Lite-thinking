@@ -40,7 +40,7 @@ export type RegexValidation<T> = {
   element: T
   isInvalid: boolean,
   feedBack: string
-},
+};
 
 
 export type EmailsArray = {

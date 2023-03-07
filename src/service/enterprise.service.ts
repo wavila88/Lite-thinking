@@ -27,7 +27,6 @@ export const createEnterprise = async (enterprise: EnterpriseTypeForm) => {
  * Back end will get verified emails and all enterprises to send emails
  */
 export const sendEmails = async (emails: Array<string>) => {
-  debugger
   await makeRequest({
     method: "POST",
     url: "/api/emailEnterprise",

@@ -19,7 +19,7 @@ export const makeRequest = async ({
   });
   const json = await response.json();
   console.log(json);
-  if (json.error) {
+  if (!response.ok) {
     const errorMessage =
     json.data?.message ||
     'Something went wrong,';

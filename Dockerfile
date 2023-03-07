@@ -19,6 +19,6 @@ CMD ["npm", "start"]
 # docker run --publish 80:80 lite-thinking:v1
 
 #Push into ECR
-# docker build -t lite-thinking:v1 .
+# aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/p1g5b2e2
 # docker tag lite-thinking:v1 public.ecr.aws/p1g5b2e2/think-lite:latest
 # docker push public.ecr.aws/p1g5b2e2/think-lite:latest

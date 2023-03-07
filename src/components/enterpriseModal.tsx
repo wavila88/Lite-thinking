@@ -42,7 +42,7 @@ function EnterpriseModal() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Please add Emails separated by ','</Modal.Title>
+          <Modal.Title>Please add Emails separated by ,</Modal.Title>
         </Modal.Header>
         <Modal.Body>
      

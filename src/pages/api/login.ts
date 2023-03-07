@@ -14,7 +14,7 @@ export default async function handler(
     const user= await loginQuery(req.body)
     console.log(`return user ${JSON.stringify(user)}`);
     
-    if(user){
+    if(user.email){
      return res.status(200).json({ 
        email: user.email,
        rol: user.rol_id
