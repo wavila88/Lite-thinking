@@ -20,6 +20,9 @@ export const loginQuery = async (info: LoginForm) => {
 };
 
 const getUser = (users: any, password: string) => {
+  console.log('uSERS =>'+JSON.stringify(users));
+  console.log('password =>'+password);
+  
  return users.find((user:any) => 
   compare(user.password,password) 
   )

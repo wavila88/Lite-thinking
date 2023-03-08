@@ -1,4 +1,5 @@
 import { EnterpriseType, EnterpriseTypeForm } from "@/utils/types";
+import { url } from "inspector";
 import Router from "next/router";
 import { makeRequest } from "./https";
 
@@ -22,6 +23,19 @@ export const createEnterprise = async (enterprise: EnterpriseTypeForm) => {
   });
   Router.push("/enterprises");
 };
+/**
+ * 
+ * Normaly in http request we use delete api routes can be accesed with get, so is not a fiable example of http request
+ */
+export const removeEnterprise = async (NIT: number) => {
+  await makeRequest({
+    method:'POST',
+    body:{
+      NIT
+    },
+    url:'/api/deleteEnterprise'
+  })
+}
 
 /**
  * Back end will get verified emails and all enterprises to send emails

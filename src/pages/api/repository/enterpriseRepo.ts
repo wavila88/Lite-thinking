@@ -19,6 +19,10 @@ export const createEnterprise = async (enterprise: EnterpriseType) => {
   
 }; 
 
+export const deleteEnterprise = async (nit: number) => {
+  await Enterprises.destroy({ where: { NIT: nit } });
+}
+
 
 export const sendEmailWithEnterprises = async(emails:any) => {
   console.log('Correos =>'+ emails);

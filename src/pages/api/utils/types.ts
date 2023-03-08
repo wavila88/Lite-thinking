@@ -38,3 +38,9 @@ export type RequestParams = {
   body?: any;
   url: string;
 };
+
+export type ArticleCreateType = {
+  name: string,
+  numberProducts: number,
+  enterpriseNIT:number
+}

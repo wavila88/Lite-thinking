@@ -1,5 +1,6 @@
 // import Rol from '../models/RolModel';
 import Enterprises from '../models/Enterprises/EnterprisesModel';
+import Inventary from '../models/Inventary/InventaryModel';
 import Roles from '../models/Roles/RolesModel';
 import Users from '../models/Users/UserModel';
 import { compare, encrypt } from '../utils/encryptFile';
@@ -23,6 +24,7 @@ export const createDataBase = async () =>{
   //Roles
   await Roles.sync();
   await Enterprises.sync();
+  await Inventary.sync();
  
   arrayRol.forEach((rol:RolType) => {
     Roles.create({

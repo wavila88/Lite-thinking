@@ -33,6 +33,17 @@ export type EnterpriseTypeForm = {
   phoneNumber: RegexValidation<string>
 
 };
+export type ArticleTypeForm = {
+  name: RegexValidation<string>,
+  numberProducts: RegexValidation<number>,
+};
+
+export type ArticlesType = {
+  id: number,
+  name: string,
+  numberProducts: number,
+}
+
 /**
  * Using Generics for validation
  */

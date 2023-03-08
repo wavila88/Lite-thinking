@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import ContainerLayout from '@/components/layouts/container';
-import { getEnterprises, sendEmails } from '@/service/enterprise.service';
+import { getEnterprises, removeEnterprise, sendEmails } from '@/service/enterprise.service';
 import { COLUMNS } from '@/utils/enterprise.utils';
 import { EnterpriseType } from '@/utils/types';
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableHead, MDBTableBody, MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { toPng } from 'html-to-image';
 const { saveAs } = require('file-saver');
+import Image from 'next/image';
+import deleteImg from '../../public/images/delete.png'
+import articleImg from '../../public/images/shopping_cart2.png'
+
 
 import Button from 'react-bootstrap/Button';
 import Router from 'next/router'
@@ -47,6 +51,16 @@ const Enterprises = () => {
 
   },[]);
 
+  const removeEnterpriseAndReload = (NIT: number) =>{
+    removeEnterprise(NIT); 
+    window.location.reload()
+  }
+
+  const loadArticles = (NIT: number) => {
+    localStorage.setItem('NIT', NIT.toString());
+    Router.push("/articles");
+  }
+
 
   return(
   <div ref={ref}>
@@ -68,6 +82,20 @@ const Enterprises = () => {
             <td>{enterprise.enterpriseName}</td>
             <td>{enterprise.address}</td>
             <td>{enterprise.phoneNumber}</td>
+            <td>
+              <Button color='black' variant='light' onClick={() => loadArticles(enterprise.NIT)} >
+              <Image alt='Delete register' width="20" height="20" src={articleImg.src}></Image>
+                </Button></td>
+            <td> 
+              <Button 
+                type='submit'
+                variant='light' 
+                onClick={() =>  removeEnterpriseAndReload(enterprise.NIT)} 
+                size='sm'> 
+                  <Image alt='Delete register' width="20" height="20" src={deleteImg.src}></Image>
+                  </Button>
+                
+           </td>
           </tr>
         ) )
         }
