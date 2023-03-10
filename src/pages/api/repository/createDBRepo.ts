@@ -3,7 +3,7 @@ import Enterprises from '../models/Enterprises/EnterprisesModel';
 import Inventary from '../models/Inventary/InventaryModel';
 import Roles from '../models/Roles/RolesModel';
 import Users from '../models/Users/UserModel';
-import { compare, encrypt } from '../utils/encryptFile';
+import { encryptData } from '../utils/encryptFile';
 import { RolType, UserType } from "../utils/types"
 
 
@@ -18,8 +18,8 @@ export const createDataBase = async () =>{
   ];
 
   const arrayUsers: Array<UserType> = [
-    {email:'Josep@gmail.com', password: await encrypt('1234567'), rol_id:1},
-    {email: 'external@gmail.com', password: await encrypt('4321'), rol_id: 2}
+    {email:'Josep@gmail.com', password: await encryptData('1234567'), rol_id:1},
+    {email: 'external@gmail.com', password: await encryptData('4321'), rol_id: 2}
   ]
   //Roles
   await Roles.sync();

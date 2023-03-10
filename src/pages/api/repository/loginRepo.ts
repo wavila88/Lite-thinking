@@ -2,7 +2,7 @@ import { LoginForm } from "@/utils/types";
 import Roles from "../models/Roles/RolesModel";
 import Users from "../models/Users/UserModel";
 import sequelize from "../sql/connect";
-import { compare } from "../utils/encryptFile";
+import { decryptData } from "../utils/encryptFile";
 
 
 
@@ -23,7 +23,7 @@ const getUser = (users: any, password: string) => {
   console.log('uSERS =>'+JSON.stringify(users));
   console.log('password =>'+password);
   
- return users.find((user:any) => 
-  compare(user.password,password) 
-  )
+ return users.find((user:any) => (
+    decryptData(user.password) === password
+  ))
 }
