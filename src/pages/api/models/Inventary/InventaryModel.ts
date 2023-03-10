@@ -16,7 +16,7 @@ const Inventary = sequelize.define('Inventary', {
     length: 30
   },
   enterpriseNIT: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     references: {
       model: 'Enterprises', // 'fathers' refers to table name
       key: 'NIT', // 'nit' refers to column name in fathers table

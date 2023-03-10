@@ -2,18 +2,15 @@ import ContainerLayout from '@/components/layouts/container';
 import { useState, useEffect } from 'react';
 import { ArticleTypeForm, EnterpriseType, EnterpriseTypeForm } from '@/utils/types';
 import Router from 'next/router'
-import {
-  MDBValidation,
-  MDBValidationItem,
-  MDBInput,
-  MDBBtn,
 
-} from 'mdb-react-ui-kit';
-import { createEnterprise } from '@/service/enterprise.service';
-import config from './api/utils/config';
-import { FEED_BACK_ADDRESS, FEED_BACK_ENTERPRISE, FEED_BACK_NAME_ARTICLE, FEED_BACK_NIT, FEED_BACK_NUMBER_PRODUCTS, FEED_BACK_PHONE_NUMBER, ROL_ADMIN, ROL_ITEM } from '@/utils/constants';
-import ErrorLabel from '@/components/errolLabel';
-import { articleNameRegex, productsNumberRegex } from '@/utils/utils';
+import {createArticle} from '../service/article.service';
+import {  FEED_BACK_NAME_ARTICLE, FEED_BACK_NUMBER_PRODUCTS, FORM_NOT_COMPLETE, ROL_ADMIN, ROL_ITEM } from '@/utils/constants';
+import { articleNameRegex, getNit, productsNumberRegex, validateAllFields } from '@/utils/utils';
+import { Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import styles from '../styles/enterprise.module.css';
+import Banner from '@/components/banner';
+import EnterpriseInfo from '@/components/enterpriseInfo';
 
 
 const ArticleCreate = () => {
@@ -26,13 +23,13 @@ const ArticleCreate = () => {
 
   const [article, setArticle] = useState<ArticleTypeForm>(
     {
-      name: {element: '', isInvalid: true, feedBack:FEED_BACK_NAME_ARTICLE },
-      numberProducts: {element:0, isInvalid: true, feedBack: FEED_BACK_NUMBER_PRODUCTS},
+      name: {element: '', isInvalid: false, feedBack:FEED_BACK_NAME_ARTICLE },
+      numberProducts: {element:0, isInvalid: false, feedBack: FEED_BACK_NUMBER_PRODUCTS},
     }
     );
+  const [validForm, setValidForm] = useState<boolean>(true);
   
     const onChange = (e: any) => {
-      debugger
       let isInvalid, feedBack;
       switch(e.target.name){
         case 'name':
@@ -48,42 +45,56 @@ const ArticleCreate = () => {
     };
 
 
-
+    const validateSendForm = () => {
+      const isValid =validateAllFields(article);
+      if(isValid){
+       setValidForm(true);
+       createArticle(article,getNit());
+      }else{
+       setValidForm(false);
+      }
+     }
 
 
   return(
   <>
    <ContainerLayout>
-  
-    
-          <MDBInput
-            value={article.name.element}
-            name='name'
-            onChange={onChange}
-            id='validationCustom01'
-            label='Article name'
-            required
-          />
+   <EnterpriseInfo/>
+   <Form>
+   {!validForm && <Banner variant='danger' message={FORM_NOT_COMPLETE} />}
+      <Form.Group className="mb-3"  controlId="article">
+        <Form.Label>{'Article Name'}</Form.Label>
+        <Form.Control 
+          type="text"
+          name='name'
+          isInvalid={article.name.isInvalid}
+          onChange={onChange}
+          value={article.name.element}
+          placeholder="Name of article" />
+        <Form.Control.Feedback type='invalid'>
+          {article.name.feedBack}
+        </Form.Control.Feedback>
+      </Form.Group>
 
-         {article.name.isInvalid && <ErrorLabel errorMessage={article.name.feedBack}/>}
-
-        
-          <MDBInput
-            value={article.numberProducts.element}
-            name='numberProducts'
-            onChange={onChange}
-            id='validationCustom02'
-            required
-            label='Number of products'
-          />
-           {article.numberProducts.isInvalid &&<ErrorLabel errorMessage={article.numberProducts.feedBack}/>}
-         
-        <div className='col-12'>
-        <MDBBtn type='submit' onClick={ ()=> {} }>Save Article</MDBBtn>
-        
+      <Form.Group className="mb-1 col-5"  controlId="numberProducts">
+        <Form.Label>{'Number of products'}</Form.Label>
+        <Form.Control 
+          type="number"
+          name='numberProducts'
+          isInvalid={article.numberProducts.isInvalid}
+          onChange={onChange}
+          value={article.numberProducts.element}
+          placeholder="" />
+        <Form.Control.Feedback type='invalid'>
+          {article.numberProducts.feedBack}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <div className={styles.spaceTop}>
+        <Button onClick={() => validateSendForm()} variant='dark'>Save Article</Button>
+        <Button onClick={() => Router.push('/enterprises') } style={{ marginLeft: 20}} variant='danger'>Cancel</Button>
       </div>
- 
-
+      
+    </Form>   
     </ContainerLayout> 
   </>
   )

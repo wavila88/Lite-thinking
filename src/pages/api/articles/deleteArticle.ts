@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { deleteArticle } from "./repository/inventaryRepo";
-import { ARTICLE_REMOVED } from "./utils/constants";
-import { ResponseString, UserToReturn } from "./utils/types";
+import { deleteArticle } from "../repository/inventaryRepo";
+import { ARTICLE_REMOVED } from "../utils/constants";
+import { ResponseString, UserToReturn } from "../utils/types";
 
 export default async function handler(
   req: NextApiRequest,

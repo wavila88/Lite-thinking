@@ -5,7 +5,7 @@ import sequelize from '../../sql/connect';
 
 const Enterprises = sequelize.define('Enterprises', {
   NIT: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     allowNull: false,
     primaryKey: true,
     unique: true,

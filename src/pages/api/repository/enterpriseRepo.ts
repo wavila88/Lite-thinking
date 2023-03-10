@@ -1,7 +1,10 @@
 import { makeRequest } from "../utils/https";
 import Enterprises from "../models/Enterprises/EnterprisesModel";
 import { API_EMAIL_SERVICE } from "../utils/constants";
-import { EnterpriseType } from "../utils/types";
+import { EnterpriseType, ResponseString } from "../utils/types";
+import Inventary from "../models/Inventary/InventaryModel";
+import createHttpError from "http-errors";
+import { NextApiResponse } from "next";
 
 export const getEnterprises = async () =>  await Enterprises.findAll({attributes: ['NIT', 'enterpriseName','address','phoneNumber']});
  
@@ -20,6 +23,12 @@ export const createEnterprise = async (enterprise: EnterpriseType) => {
 }; 
 
 export const deleteEnterprise = async (nit: number) => {
+   const inventary = await Inventary.findAll({ where: { enterpriseNIT: nit } });
+
+  if(inventary.length > 0) {
+    throw new Error('Cannot remove this Enterprise if has articles');
+  } 
+
   await Enterprises.destroy({ where: { NIT: nit } });
 }
 

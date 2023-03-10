@@ -15,10 +15,9 @@ export default async function handler(
       response: ENTERPRISE_REMOVED,
     });
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
-      response: JSON.stringify(error),
+      response: error.message,
     });
   }
 }

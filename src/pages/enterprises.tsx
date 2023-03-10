@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import ContainerLayout from '@/components/layouts/container';
 import { getEnterprises, removeEnterprise, sendEmails } from '@/service/enterprise.service';
-import { COLUMNS } from '@/utils/enterprise.utils';
-import { EnterpriseType } from '@/utils/types';
+import { COLUMNS, enterpriseInitialBanner } from '@/utils/enterprise.utils';
+import { BannerRenderType, EnterpriseType } from '@/utils/types';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { toPng } from 'html-to-image';
 const { saveAs } = require('file-saver');
@@ -11,18 +11,20 @@ import Image from 'next/image';
 import deleteImg from '../../public/images/delete.png'
 import articleImg from '../../public/images/shopping_cart2.png'
 
-
 import Button from 'react-bootstrap/Button';
 import Router from 'next/router'
 import styles from '../styles/enterprise.module.css'
 import { ROL_ADMIN, ROL_ITEM } from '@/utils/constants';
 import EnterpriseModal from '@/components/enterpriseModal';
+import { getRol } from '@/utils/utils';
+import Banner from '@/components/banner';
 
 
 const Enterprises = () => {
 
  const [enterprises, setEnterprises] = useState<Array<EnterpriseType>>();
  const ref = useRef<HTMLDivElement>(null);
+ const [banner, setBanner] = useState<BannerRenderType>(enterpriseInitialBanner);
 
  const handleScreenshot = useCallback(() => {
   if (ref.current === null) {
@@ -44,28 +46,41 @@ const Enterprises = () => {
 
 
   useEffect(() => {
+    uploadEnterprises();
+  },[]);
+
+  const uploadEnterprises = () => {
     getEnterprises().then(response => {
  
       setEnterprises(response);
     })
-
-  },[]);
-
-  const removeEnterpriseAndReload = (NIT: number) =>{
-    removeEnterprise(NIT); 
-    window.location.reload()
   }
 
-  const loadArticles = (NIT: number) => {
-    localStorage.setItem('NIT', NIT.toString());
+  const removeEnterpriseAndReload = async (NIT: number) =>{
+    try{
+     await removeEnterprise(NIT) 
+     uploadEnterprises();
+    }catch(err:any){
+      setBanner({
+        message: err.message,
+        show: true,
+        variant: 'danger'
+      })
+    }
+    
+  }
+
+  const loadArticles = (enterprise: EnterpriseType) => {
+    localStorage.setItem('NIT', enterprise.NIT.toString());
+    localStorage.setItem('ENTERPRISE', JSON.stringify(enterprise));
     Router.push("/articles");
   }
 
-
   return(
   <div ref={ref}>
+  
    <ContainerLayout >
-    
+   {banner.show && <Banner message={banner?.message} variant={banner?.variant} /> }
    <MDBTable>
       <MDBTableHead>
         <tr>
@@ -82,8 +97,10 @@ const Enterprises = () => {
             <td>{enterprise.enterpriseName}</td>
             <td>{enterprise.address}</td>
             <td>{enterprise.phoneNumber}</td>
-            <td>
-              <Button color='black' variant='light' onClick={() => loadArticles(enterprise.NIT)} >
+           {getRol() === ROL_ADMIN &&
+              <>
+               <td>
+              <Button color='black' variant='light' onClick={() => loadArticles(enterprise)} >
               <Image alt='Delete register' width="20" height="20" src={articleImg.src}></Image>
                 </Button></td>
             <td> 
@@ -96,14 +113,16 @@ const Enterprises = () => {
                   </Button>
                 
            </td>
+              </>           
+           }
+           
           </tr>
         ) )
         }
        
       </MDBTableBody>
     </MDBTable>
-  { typeof window !== 'undefined' && localStorage.getItem(ROL_ITEM) === ROL_ADMIN &&
-
+  { getRol() === ROL_ADMIN &&
     <div className={styles.buttonsContainer}>
       <div className={styles.spaceBtn}>
         <Button variant="dark" onClick={()=> Router.push('/enterpriseCreate')}>Create Enterprise</Button>
@@ -116,7 +135,6 @@ const Enterprises = () => {
       </div>
     </div>
   }
-   
     </ContainerLayout> 
   </div>
   )

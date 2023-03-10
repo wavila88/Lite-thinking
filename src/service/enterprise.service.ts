@@ -28,7 +28,7 @@ export const createEnterprise = async (enterprise: EnterpriseTypeForm) => {
  * Normaly in http request we use delete api routes can be accesed with get, so is not a fiable example of http request
  */
 export const removeEnterprise = async (NIT: number) => {
-  await makeRequest({
+ return await makeRequest({
     method:'POST',
     body:{
       NIT

@@ -58,3 +58,23 @@ export type EmailsArray = {
   emails: string,
   isvalid: boolean
 }
+
+export type ValitationReturn = {
+  isInvalid:boolean,
+  feedBack: string
+}
+
+export type VariantType = 'primary'|
+'secondary'|
+'success'|
+'danger'|
+'warning'|
+'info'|
+'light'|
+'dark';
+
+export type BannerRenderType = {
+  message: string,
+  variant: VariantType
+  show: boolean
+}
