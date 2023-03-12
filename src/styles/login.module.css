@@ -1,5 +1,5 @@
 .loginContainer{
-	height: 331px;
+	height: 300px;
 	width: 300px;
 	background-color: white;
 	margin-top: 10%;
@@ -9,6 +9,18 @@
 	border-bottom: 3px solid #0000FF;
 	border-left: 1px solid #0000FF;
   }
+
+	.loginContainerError{
+		height: 380px;
+		width: 300px;
+		background-color: white;
+		margin-top: 10%;
+		margin-left: 40%;
+		border-top: 3px solid #0000FF;
+		border-right: 6px solid #0000FF;
+		border-bottom: 3px solid #0000FF;
+		border-left: 1px solid #0000FF;
+		}
   
   .logo{
 	margin-left: 25%;
@@ -61,6 +73,7 @@
 	width: 205px;
 	margin-left: 50px;
 	margin-top: 10px;
+	
   }
   
   #input1{
@@ -93,3 +106,7 @@
 	padding-top: 10px;
 	padding-bottom: 20px;
   }
+
+	.marginBottom{
+		margin-bottom: 30px;
+	}

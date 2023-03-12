@@ -14,9 +14,3 @@ export const COLUMNS_ARTICLES =[
   'Number on Inventary'
 ]
 
-export const enterpriseInitialBanner:BannerRenderType =
-{
-  message: '',
-  variant: 'danger',
-  show: false
-}

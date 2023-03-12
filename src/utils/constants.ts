@@ -36,4 +36,5 @@ export enum ENUM_ENTERPRISE_TYPES {
   PHONE_NUMBER = 'phoneNumber'
 }
 
-export const FORM_NOT_COMPLETE = 'This form does not meet the requirements to be sent'
+export const FORM_NOT_COMPLETE = 'This form does not meet the requirements to be sent';
+export const INVALID_CREDENTIALS = 'Invalid credentials.';

@@ -3,17 +3,20 @@ import { Inter } from 'next/font/google'
 import ErrorLabel from '../components/errolLabel';
 import styles from '../styles/login.module.css';
 import logo from '../../public/images/Logo.png'
-import { emailValidation } from '@/utils/utils';
-import { LoginErrorMessages, LoginForm } from '@/utils/types';
-import { EMAIL_ERROR_MESSAGE } from '@/utils/constants';
+import { emailValidation, getRolName, intialBannerState } from '@/utils/utils';
+import { BannerRenderType, LoginErrorMessages, LoginForm } from '@/utils/types';
+import { EMAIL_ERROR_MESSAGE, INVALID_CREDENTIALS } from '@/utils/constants';
 import { loginService, initDBService } from '@/service/login.service';
 import Image from 'next/image';
+import Banner from '@/components/banner';
+import Router from 'next/router';
 
 
 
 export default function Home() {
 
   const [errorMessage, setErrorMessage] = useState<LoginErrorMessages>({emailMessage: null, isReadyToSubmit: false});
+  const [banner, setBanner] =useState<BannerRenderType>(intialBannerState);
   const [loginForm, setLoginForm] = useState<LoginForm>({email: '', password:''})
 
   /**
@@ -40,11 +43,33 @@ export default function Home() {
       })
     } 
   }
- 
 
+  const callLoginService = () => {
+  
+      if(errorMessage.isReadyToSubmit){
+      
+       loginService(loginForm).then((user: any) => {
+       if(user?.rol){
+           localStorage.setItem('ROL',getRolName(user.rol));
+           Router.push('/enterprises');
+         } else {
+          
+          }
+        }).catch(error => {
+          setBanner({
+            message: INVALID_CREDENTIALS,
+            variant: 'danger',
+            show: true
+          })
+        }
+        );
+        }
+    } 
+  
   return (
     <>
-    <div className={styles.loginContainer}>
+    <div className={banner.show? styles.loginContainerError:  styles.loginContainer}>
+    {banner.show && <Banner message={banner?.message} variant={banner?.variant} /> }
       <div className={styles.logo}>
         <Image alt='' width="150" height="80" src={logo.src}></Image>
       </div>
@@ -58,8 +83,7 @@ export default function Home() {
           id={styles.input2} 
           onChange={(event) => setLoginForm({...loginForm, password: event.target.value})}>
           </input>
-        <button  data-testid='login-test-id' disabled={!errorMessage.isReadyToSubmit} className={styles.login_button} onClick={() => errorMessage.isReadyToSubmit && loginService(loginForm) }>
-          Login
+        <button  data-testid='login-test-id' disabled={!errorMessage.isReadyToSubmit} className={styles.login_button} onClick={callLoginService}> Login
         </button>
       </div>
       <div className={styles.container_password}>

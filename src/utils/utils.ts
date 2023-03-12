@@ -1,4 +1,5 @@
 import { ARRAY_EMAIL_PATTERN, BETWEN_3_30_CARACTERS, BETWEN_5_40_CARACTERS, EMAIL_PATTERN, NAME_ARTICLE_REGEX, NIT_REGEX, NUMBER_PRODUCTS_REGEX, PHONE_NUMBER_REGEX, ROL_ADMIN, ROL_EXTERNAL, ROL_ITEM } from "./constants";
+import { BannerRenderType } from "./types";
 
 export const emailValidation = new RegExp(EMAIL_PATTERN);
 
@@ -27,10 +28,17 @@ export const getEnterpriseIfo = () => typeof window !== 'undefined'&& JSON.parse
 export const validateAllFields = (object: any) =>{
   for (const property in object) {
     //if all fields is filled up and is valid return true;
-    if((object[property].element.toString().length === 0) || object[property].isInvalid){
+    if((object[property].element.toString().length < 2) || object[property].isInvalid){
       return false;
     }   
   }
   //if all fields are filled and are not invalid return true
   return true;
+}
+
+export const intialBannerState:BannerRenderType =
+{
+  message: '',
+  variant: 'danger',
+  show: false
 }

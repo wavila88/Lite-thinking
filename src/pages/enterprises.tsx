@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import ContainerLayout from '@/components/layouts/container';
 import { getEnterprises, removeEnterprise, sendEmails } from '@/service/enterprise.service';
-import { COLUMNS, enterpriseInitialBanner } from '@/utils/enterprise.utils';
+import { COLUMNS } from '@/utils/enterprise.utils';
 import { BannerRenderType, EnterpriseType } from '@/utils/types';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { toPng } from 'html-to-image';
@@ -16,7 +16,7 @@ import Router from 'next/router'
 import styles from '../styles/enterprise.module.css'
 import { ROL_ADMIN, ROL_ITEM } from '@/utils/constants';
 import EnterpriseModal from '@/components/enterpriseModal';
-import { getRol } from '@/utils/utils';
+import { getRol, intialBannerState } from '@/utils/utils';
 import Banner from '@/components/banner';
 
 
@@ -24,7 +24,7 @@ const Enterprises = () => {
 
  const [enterprises, setEnterprises] = useState<Array<EnterpriseType>>();
  const ref = useRef<HTMLDivElement>(null);
- const [banner, setBanner] = useState<BannerRenderType>(enterpriseInitialBanner);
+ const [banner, setBanner] = useState<BannerRenderType>(intialBannerState);
 
  const handleScreenshot = useCallback(() => {
   if (ref.current === null) {
