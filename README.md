@@ -1,3 +1,10 @@
+## Project purpose
+
+The purpose is to create an application to demonstrate my knowledge in React JS, NodeJS and AWS.
+
+It is an application with login, entry of companies and articles by company, allows downloading and reports using SES
+
+
 ## Technologies used
 
 Monolitic  Aplication made with: 
@@ -8,15 +15,19 @@ Monolitic  Aplication made with:
 * We´re using [Sequelize](https://sequelize.org/) as ORM here you can check the [models](https://github.com/wavila88/lite-thinking/tree/development/src/pages/api/models).
 * This ORM allow to create dataTable using models, in this project we are making a [firts load](https://github.com/wavila88/lite-thinking/blob/development/src/pages/api/service/createDBService.ts), to don´t fill it manually.
 
-## Users to navigate
-### Admin
+## Start using Web App
+
+### URL
+[LITE-THINK](http://cdkin-myfar-af2ykik20ks7-1281929466.us-east-1.elb.amazonaws.com/)
+
+### Admin User
  `user: josep@gmail.com`, `password: 123456`
-### External
+### External User
  `user: external@gmail.com`, `password: 4321`
  
 ## Infraestructure AWS
 
-You can refer to [this project](https://github.com/wavila88/lite-thinking-infraestructure) 
+To demostrate AWS strengths I created infraestructure as code project.  You can refer to this project to see it in more detail [this project](https://github.com/wavila88/lite-thinking-infraestructure) 
  
 
 ## Send report emails
