@@ -21,7 +21,7 @@ Monolitic  Aplication made with:
 [LITE-THINK](http://cdkin-myfar-af2ykik20ks7-1281929466.us-east-1.elb.amazonaws.com/)
 
 ### Admin User
- `user: josep@gmail.com`, `password: 123456`
+ `user: josep@gmail.com`, `password: 1234567`
 ### External User
  `user: external@gmail.com`, `password: 4321`
  
