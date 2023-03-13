@@ -3,8 +3,6 @@ import Enterprises from "../models/Enterprises/EnterprisesModel";
 import { API_EMAIL_SERVICE } from "../utils/constants";
 import { EnterpriseType, ResponseString } from "../utils/types";
 import Inventary from "../models/Inventary/InventaryModel";
-import createHttpError from "http-errors";
-import { NextApiResponse } from "next";
 
 export const getEnterprises = async () =>  await Enterprises.findAll({attributes: ['NIT', 'enterpriseName','address','phoneNumber']});
  

@@ -14,7 +14,7 @@ export default async function handler(
     res.status(200).json({
       response: ENTERPRISE_REMOVED,
     });
-  } catch (error) {
+  } catch (error: any) {
 
     res.status(500).json({
       response: error.message,
